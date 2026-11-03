@@ -567,6 +567,29 @@
     color: var(--paper-ink);
   }
 
+  /* ---------- Award banner — gold laurel chip ---------- */
+  .award-banner {
+    display: inline-flex; align-items: center; gap: 9px;
+    margin-top: 1.4rem;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--gold-2), var(--gold) 60%, var(--gold-3));
+    border: 1px solid var(--gold-3);
+    color: var(--paper-ink);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    animation: awardGlow 3.2s ease-in-out infinite;
+  }
+  .award-banner svg { width: 17px; height: 17px; flex: 0 0 auto; }
+  .award-banner strong { font-weight: 600; }
+  @keyframes awardGlow {
+    0%, 100% { box-shadow: 0 16px 32px -16px rgba(212,169,92,0.85), 0 0 0 3px rgba(212,169,92,0.16); }
+    50%      { box-shadow: 0 20px 42px -14px rgba(212,169,92,0.95), 0 0 0 6px rgba(212,169,92,0.30); }
+  }
+  @media (prefers-reduced-motion: reduce) { .award-banner { animation: none; } }
+
   /* ---------- Hero board specimen frame ---------- */
   .hero-board {
     position: relative;
@@ -933,6 +956,56 @@
     margin-top: 18px;
     flex: 1 1 auto;
     display: flex; flex-direction: column;
+  }
+  /* ---------- Phone-framed app screen capture (DriveSense) ---------- */
+  .demo-phone {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .demo-phone .device {
+    position: relative;
+    width: min(240px, 78%);
+    padding: 10px;
+    border-radius: 26px;
+    background: var(--navy-ink);
+    border: 1px solid var(--paper-rule);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.7) inset,
+      0 22px 38px -20px rgba(20,24,42,0.45),
+      0 2px 0 var(--paper-edge);
+  }
+  /* speaker slit sitting over the top of the screen */
+  .demo-phone .device::before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 58px;
+    height: 5px;
+    border-radius: 3px;
+    background: rgba(246,244,240,0.28);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .demo-phone video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 296 / 640;
+    border-radius: 17px;
+    background: #000;
+    object-fit: cover;
+  }
+  .demo-phone .cap {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--paper-ink-soft);
+    text-align: center;
   }
   /* Skill-filter highlight states */
   .card[data-highlighted="true"] {
@@ -1554,6 +1627,22 @@
     color: var(--paper-ink-soft);
     text-transform: uppercase;
   }
+  /* gold award strip pinned to the degree card */
+  .edu-card .edu-award {
+    margin-top: 16px;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--gold-2), var(--gold) 65%, var(--gold-3));
+    border: 1px solid var(--gold-3);
+    box-shadow: 0 12px 24px -14px rgba(212,169,92,0.8);
+    color: var(--paper-ink);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .edu-card .edu-award svg { width: 14px; height: 14px; flex: 0 0 auto; }
 
   .marginalia.edu-margin {
     position: relative;
@@ -1602,6 +1691,13 @@
     content: "·";
     position: absolute; left: -3px; top: 50%; transform: translateY(-50%);
     color: var(--gold-3);
+  }
+  /* the headline honor — gold, starred, slightly larger */
+  .honors .item.award-headline {
+    color: var(--gold-3);
+    font-weight: 600;
+    font-size: 0.98rem;
+    letter-spacing: 0.01em;
   }
 
   /* ---------- CONTACT ---------- */
@@ -1817,6 +1913,15 @@
             <span class="loc">Miami, FL</span>
           </div>
 
+          <div class="award-banner reveal" role="note" aria-label="Award — Outstanding Bachelor's Graduate Award, Florida International University, Fall 2026">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="9.5" r="5.5" />
+              <polygon points="12 6.7, 12.72 8.42, 14.58 8.54, 13.15 9.75, 13.62 11.56, 12 10.6, 10.38 11.56, 10.85 9.75, 9.42 8.54, 11.28 8.42" fill="currentColor" stroke="none" />
+              <path d="M9.9 14.2 8.2 20.4l3.8-2.1 3.8 2.1-1.7-6.2" />
+            </svg>
+            <span>Outstanding Bachelor's Graduate Award&nbsp;·&nbsp;<strong>Fall 2026</strong>&nbsp;—&nbsp;Florida International University</span>
+          </div>
+
           <h1 class="reveal d1">
             Samantha<br />
             Scott<span class="accent">.</span>
@@ -1834,7 +1939,7 @@
           </div>
 
           <p class="tagline reveal d3">
-            <strong>FIU senior · 3.99 GPA.</strong> Building embedded systems and
+            <strong>FIU senior · 3.99 GPA · 2026 Outstanding Graduate.</strong> Building embedded systems and
             software with a focus on <em>IoT, instrumentation, and reliable engineering.</em>
           </p>
 
@@ -1843,9 +1948,13 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
               Email
             </a>
-            <a class="btn gold" href="samanthascott-resume.pdf" download>
+            <a class="btn gold" href="Samantha_Scott_Embedded_Engineer.pdf" download>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M12 12v6m-3-3 3 3 3-3"/></svg>
-              Résumé
+              Résumé — Embedded
+            </a>
+            <a class="btn gold" href="Samantha_Scott_Software_Engineering.pdf" download>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M12 12v6m-3-3 3 3 3-3"/></svg>
+              Résumé — Software
             </a>
             <a class="btn" href="https://github.com/samanthapscott" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.63 22.42c.58.1.79-.25.79-.55v-2c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.1-3.05 0 0 .97-.31 3.18 1.17a11 11 0 0 1 5.79 0c2.2-1.48 3.17-1.17 3.17-1.17.62 1.59.23 2.76.11 3.05.74.8 1.18 1.82 1.18 3.07 0 4.4-2.7 5.36-5.27 5.65.41.36.78 1.06.78 2.14v3.17c0 .31.21.66.8.55A11.5 11.5 0 0 0 12 .5Z"/></svg>
@@ -1958,9 +2067,10 @@
           </svg>
         </h2>
         <p style="margin-top:14px; max-width:60ch; color:var(--paper-ink-soft); font-family:'Newsreader',serif; font-size:1.02rem;">
-          Five working specimens — four with live in-browser demos. Drag the
-          sliders, step the state machine, enable the camera. The originals live
-          on the bench and in a GitHub repo; this is the live exhibit.
+          Seven working specimens — four with live in-browser demos, plus a
+          live screen-capture of the DriveSense app. Drag the sliders, step the
+          state machine, enable the camera. The originals live on the bench and
+          in a GitHub repo; this is the live exhibit.
         </p>
       </div>
 
@@ -1976,12 +2086,28 @@
               A steering-wheel biometric module that verifies the driver before
               the vehicle can be operated, paired with a companion mobile app for
               enrollment, alerts, and live status. The hardware build lives on
-              the bench — browser demo coming soon.
+              the bench — the app itself is captured live below.
             </p>
             <div class="stack">
               <span>Biometric Sensor</span><span>Embedded C</span><span>Microcontroller</span><span>Bluetooth</span><span>Mobile App</span>
             </div>
           </header>
+          <div class="demo-mount demo-phone">
+            <div class="device">
+              <video
+                data-src="drivesense-app.mp4"
+                poster="drivesense-app-poster.jpg"
+                autoplay
+                muted
+                loop
+                controls
+                playsinline
+                preload="auto"
+                aria-label="Screen recording of the DriveSense companion mobile app — enrollment, live status and driver-verification workflow."
+              ></video>
+            </div>
+            <div class="cap">DriveSense app · screen capture · 02:44</div>
+          </div>
         </article>
 
         <article class="card demo-card reveal d1" data-status="shipped" data-stack="zybo fpga embedded c vhdl state machine">
@@ -2130,6 +2256,49 @@
             </p>
             <div class="stack">
               <span>Embedded C</span><span>SPI</span><span>Microcontroller</span>
+            </div>
+          </header>
+        </article>
+
+        <article class="card demo-card reveal d1" data-status="shipped" data-stack="python linux raspberry pi systemd ssh ufw monitoring">
+          <div class="ribbon"><span><span class="led" aria-hidden="true"></span>Specimen · 03.F — Linux Server Monitor</span><span>Shipped · Sep 2026</span></div>
+          <span class="reg-marks" aria-hidden="true"><i></i></span>
+          <header class="card-meta">
+            <h3 class="title">Raspberry Pi <span class="em">Server Monitor</span></h3>
+            <div class="date">Python health tool · systemd automation · SSH &amp; UFW</div>
+            <p class="desc">
+              A Python-based monitoring utility deployed on a Raspberry Pi to
+              track five system-health metrics: CPU usage, memory, disk
+              utilization, temperature, and uptime. Configurable warning
+              thresholds and timestamped logs, built on Linux /proc and /sys
+              interfaces, monitor system health to identify abnormal
+              conditions. Automated at five-minute intervals via a systemd
+              service and timer; configured SSH and UFW firewall rules for
+              secure remote administration.
+            </p>
+            <div class="stack">
+              <span>Python</span><span>Linux</span><span>Raspberry Pi</span><span>systemd</span><span>SSH</span><span>UFW</span>
+            </div>
+          </header>
+        </article>
+
+        <article class="card demo-card reveal d1" data-status="shipped" data-stack="c++ posix windows locking file linux system calls">
+          <div class="ribbon"><span><span class="led" aria-hidden="true"></span>Specimen · 03.G — File Locking Utility</span><span>Shipped · Jul 2026</span></div>
+          <span class="reg-marks" aria-hidden="true"><i></i></span>
+          <header class="card-meta">
+            <h3 class="title">Cross-Platform File <span class="em">&amp; Locking Utility</span></h3>
+            <div class="date">C++ · POSIX &amp; Windows APIs · Windows + Linux tested</div>
+            <p class="desc">
+              A cross-platform C++ utility supporting Windows and Linux,
+              implementing direct-access file operations and shared/exclusive
+              byte-range locking
+              using POSIX <span class="em">fcntl()</span> and Windows
+              <span class="em">LockFileEx()</span> APIs. File access was tested
+              across both platforms, validating locking behavior, error
+              handling, and platform-specific system calls.
+            </p>
+            <div class="stack">
+              <span>C++</span><span>POSIX</span><span>Windows API</span><span>Linux</span>
             </div>
           </header>
         </article>
@@ -2292,6 +2461,14 @@
           <div class="degree">B.S. Computer Engineering</div>
           <div class="school">Florida International University</div>
           <div class="when">Aug 2024 — Dec 2026</div>
+          <div class="edu-award">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="9.5" r="5.5" />
+              <polygon points="12 6.7, 12.72 8.42, 14.58 8.54, 13.15 9.75, 13.62 11.56, 12 10.6, 10.38 11.56, 10.85 9.75, 9.42 8.54, 11.28 8.42" fill="currentColor" stroke="none" />
+              <path d="M9.9 14.2 8.2 20.4l3.8-2.1 3.8 2.1-1.7-6.2" />
+            </svg>
+            Outstanding Bachelor's Graduate Award · Fall 2026
+          </div>
         </div>
         <div class="edu-card reveal d1" data-deg="AA">
           <div class="gpa" data-count-to="4.0" data-count-format="twoDecimal">4.00<small>GPA</small></div>
@@ -2303,6 +2480,7 @@
 
       <div class="honors reveal d2">
         <span class="heading">Honors</span>
+        <span class="item award-headline">★ Outstanding Bachelor's Graduate Award (Fall 2026)</span>
         <span class="item">Azure AZ-900</span>
         <span class="item">FIU Transfer Merit Scholarship</span>
         <span class="item">Adolfo Henriques Scholarship</span>
@@ -2330,9 +2508,13 @@
           <g class="gold-flourish"><path d="M186 50 C 196 38, 210 32, 220 42 C 222 46, 218 52, 210 50" /></g>
         </svg>
         <div class="links">
-          <a class="btn gold" href="samanthascott-resume.pdf" download>
+          <a class="btn gold" href="Samantha_Scott_Embedded_Engineer.pdf" download>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M12 12v6m-3-3 3 3 3-3"/></svg>
-            Download résumé
+            Résumé — Embedded
+          </a>
+          <a class="btn gold" href="Samantha_Scott_Software_Engineering.pdf" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M12 12v6m-3-3 3 3 3-3"/></svg>
+            Résumé — Software
           </a>
           <a class="btn primary" href="mailto:samantha_p_scott@yahoo.com?subject=Entry%2Dlevel%20engineering%20opportunity">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>

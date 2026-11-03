@@ -4,3 +4,6 @@
 .vercel
 # Claude local folder
 .claude
+
+# Original screen recording (web-optimized mp4 copy is tracked)
+ScreenRecording_*.mov
