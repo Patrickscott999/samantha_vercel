@@ -826,7 +826,8 @@
     border-radius: 2px;
   }
   .about-photos figcaption,
-  .hardware-footage figcaption {
+  .hardware-footage figcaption,
+  .cad-preview figcaption {
     color: var(--paper-ink-soft);
     font-family: "JetBrains Mono", monospace;
     font-size: 0.7rem;
@@ -1037,7 +1038,8 @@
     color: var(--paper-ink-soft);
     text-align: center;
   }
-  .hardware-footage {
+  .hardware-footage,
+  .cad-preview {
     margin: 18px 0 0;
     padding-top: 16px;
     border-top: 1px solid var(--paper-rule);
@@ -1052,6 +1054,14 @@
     background: var(--navy-ink);
     object-fit: contain;
   }
+  .cad-preview img {
+    display: block;
+    width: min(100%, 384px);
+    height: auto;
+    margin-inline: auto;
+    border-radius: 6px;
+  }
+  .cad-preview .btn { margin-top: 12px; }
   /* Skill-filter highlight states */
   .card[data-highlighted="true"] {
     border-color: var(--gold);
@@ -2319,7 +2329,7 @@
           </div>
         </article>
 
-        <article class="card demo-card reveal d1" data-status="shipped" data-stack="embedded c microcontroller spi playstation controller">
+        <article id="playstation-controller-interface" class="card demo-card reveal d1" data-status="shipped" data-stack="embedded c microcontroller spi playstation controller">
           <div class="ribbon"><span><span class="led" aria-hidden="true"></span>Specimen · 03.E — Controller Interface</span><span>Course final project</span></div>
           <span class="reg-marks" aria-hidden="true"><i></i></span>
           <header class="card-meta">
@@ -2335,6 +2345,14 @@
               <span>Embedded C</span><span>SPI</span><span>Microcontroller</span>
             </div>
           </header>
+          <figure class="cad-preview">
+            <img src="assets/playstation-controller-cad.png" width="384" height="184"
+                 loading="lazy" decoding="async"
+                 alt="AutoCAD drawing showing front, rear, top, and side views of a PlayStation controller" />
+            <figcaption>PlayStation controller · AutoCAD drawing</figcaption>
+            <a class="btn" href="Samantha%20Scott%20Final%20Project.dwg"
+               download="playstation-controller.dwg">Download AutoCAD drawing (.dwg)</a>
+          </figure>
         </article>
 
         <article class="card demo-card reveal d1" data-status="shipped" data-stack="python linux raspberry pi systemd ssh ufw monitoring">
