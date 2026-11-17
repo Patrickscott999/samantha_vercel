@@ -7,3 +7,8 @@
 
 # Original screen recording (web-optimized mp4 copy is tracked)
 ScreenRecording_*.mov
+
+# Local originals for the portfolio media in assets/
+/ProfessionalHeadshot.jpg
+/SamANDRoary.jpeg
+/TrafficLight Demo.MOV

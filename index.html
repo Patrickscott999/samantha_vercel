@@ -803,6 +803,36 @@
     align-items: start;
   }
   @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-photos {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    align-items: end;
+    gap: clamp(8px, 1.5vw, 16px);
+    max-width: 480px;
+    margin-top: clamp(20px, 3vw, 36px);
+  }
+  .about-photos figure {
+    margin: 0;
+    padding: clamp(4px, 0.65vw, 8px);
+    background: var(--paper-warm);
+    border: 1px solid var(--paper-rule);
+    border-radius: 6px;
+    box-shadow: 0 2px 0 var(--paper-edge);
+  }
+  .about-photos img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+  }
+  .about-photos figcaption,
+  .hardware-footage figcaption {
+    color: var(--paper-ink-soft);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    line-height: 1.45;
+    margin-top: 8px;
+  }
   .about-body p {
     font-size: clamp(1.05rem, 1.3vw, 1.22rem);
     color: var(--paper-ink);
@@ -1006,6 +1036,21 @@
     text-transform: uppercase;
     color: var(--paper-ink-soft);
     text-align: center;
+  }
+  .hardware-footage {
+    margin: 18px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--paper-rule);
+    text-align: center;
+  }
+  .hardware-footage video {
+    display: block;
+    width: min(100%, 270px);
+    height: auto;
+    margin-inline: auto;
+    border-radius: 6px;
+    background: var(--navy-ink);
+    object-fit: contain;
   }
   /* Skill-filter highlight states */
   .card[data-highlighted="true"] {
@@ -2037,6 +2082,23 @@
               </svg>
             </h2>
           </div>
+          <div class="about-photos">
+            <figure>
+              <img src="assets/samantha-headshot-480.jpg"
+                   srcset="assets/samantha-headshot-480.jpg 320w, assets/samantha-headshot-960.jpg 640w"
+                   sizes="(max-width: 560px) 50vw, 255px"
+                   width="640" height="960" loading="lazy" decoding="async"
+                   alt="Professional portrait of Samantha Scott in a white blouse" />
+            </figure>
+            <figure>
+              <img src="assets/samantha-roary-360.jpg"
+                   srcset="assets/samantha-roary-360.jpg 270w, assets/samantha-roary-720.jpg 540w"
+                   sizes="(max-width: 560px) 38vw, 195px"
+                   width="540" height="720" loading="lazy" decoding="async"
+                   alt="Samantha Scott hugging Roary, the FIU Panther mascot, on campus" />
+              <figcaption>With Roary at FIU</figcaption>
+            </figure>
+          </div>
         </div>
         <div class="about-body reveal d1">
           <p class="dropcap">
@@ -2174,6 +2236,15 @@
               <button data-action="reset">Reset</button>
             </div>
           </div>
+          <figure class="hardware-footage">
+            <video width="540" height="960" controls playsinline preload="none" loading="lazy"
+                   poster="assets/traffic-light-poster.jpg"
+                   aria-labelledby="traffic-light-footage-caption">
+              <source src="assets/traffic-light-demo.mp4" type="video/mp4" />
+              <a href="assets/traffic-light-demo.mp4">Download the Zybo Z7 hardware demonstration</a>
+            </video>
+            <figcaption id="traffic-light-footage-caption">Samantha demonstrates the traffic light controller on the Zybo Z7 FPGA.</figcaption>
+          </figure>
         </article>
 
         <article class="card demo-card reveal d2" data-status="recent" data-stack="arduino tinyml edge impulse c machine learning mediapipe">
